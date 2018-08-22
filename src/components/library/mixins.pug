@@ -1,0 +1,54 @@
+mixin arrows(arrows, postfix)
+    include arrows/arrows
+
+mixin card(card, postfix)
+    include card/card
+
+mixin filter(filter, postfix)
+    include filter/filter
+
+mixin hello(user, postfix)
+    include hello/hello
+
+mixin range(range,postfix)
+    include range/range
+
+mixin logo(logo)
+    include logo/logo
+
+mixin menu(menu, active, postfix)
+    include menu/menu
+
+mixin picture(picture)
+    include picture/picture
+
+mixin title(title, postfix)
+    include title/title
+
+mixin weather(weather, postfix)
+    include weather/weather
+
+mixin popup(popup, postfix)
+    include popup/popup
+
+// high order mixins
+mixin filters-block(filtersArray, postfix)
+    div.filters_block(class=postfix ? 'filters_block_' + postfix:false)
+        each filterItem in filtersArray
+            +filter(filterItem, postfix)
+
+mixin weather-block(weatherArray, postfix)
+    div.weather_block(class=postfix ? 'weather_block_' + postfix:false)
+        each weather in weatherArray
+            +weather(weather, postfix)
+
+mixin cards-block(cardArray, postfix)
+    div.card_container(class=postfix ? 'cards_container_' + postfix:false)
+        div.cards_block(class=postfix ? 'cards_block_' + postfix:false)
+            each card in cardArray
+                +card(card, postfix)
+
+mixin popup-block(popupArray)
+    div.popup_manager
+        each popup in popupArray
+            +popup(popup, postfix)

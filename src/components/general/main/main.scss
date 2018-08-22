@@ -1,0 +1,71 @@
+
+.main__card {
+  display: flex;
+  width: 630px;
+
+  padding: 0 0 0 20px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  @include background('bg', 60% top)
+}
+.main__resume {
+  padding: 26px 0 0 5px;
+}
+.main__timeline {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+
+
+@include for-tablet-landscape-up
+{
+  .main {
+    width: 50%;
+  }
+  .main__card {
+    height: 330px;
+  }
+}
+
+@include for-custom-width-from-to($mobileTimelineFromVerticalToHor, $tabletLandscapeUp) {
+  .main {
+    width: 100%;
+  }
+  .main__card {
+    width: 100%;
+    height: 330px;
+  }
+}
+
+
+@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor)
+{
+  .main {
+    margin-top: 2px;
+    width: 100%;
+  }
+
+  .main__card {
+    width: 100%;
+    height: 282px;
+    flex-direction: column;
+  }
+
+  .main__resume {
+    padding: 22px 0 0 0;
+  }
+
+  .main__timeline {
+    margin: 20px 0 0 0;
+  }
+
+}
+
+@include for-tablet-landscape-up
+{
+  .main {
+    min-width: 630px;
+  }
+}

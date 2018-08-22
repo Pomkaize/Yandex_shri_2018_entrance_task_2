@@ -10,14 +10,19 @@
     "gulp-changed": "^3.2.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
+    "gulp-order": "^1.1.1",
+    "gulp-plumber": "^1.2.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
-    "gulp-ruby-sass": "^3.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sass-glob": "^1.0.9",
     "gulp-stylelint": "^7.0.0",
+    "node-notifier": "^5.2.1",
     "stylelint": "^9.4.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-dev": "gulp watch",
+    "build": "gulp build"
   },
   "keywords": [],
   "author": "",

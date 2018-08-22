@@ -1,0 +1,5 @@
+-var postfix = 'favorite_dv'
+div.favorite_dv_container
+    +title(self.favoriteDv.title, postfix)
+    div.favorite-dv__devices
+        +cards-block(self.favoriteDv.cards, postfix)

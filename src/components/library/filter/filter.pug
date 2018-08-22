@@ -1,0 +1,5 @@
+-var className=filter.active ? 'filter--active ' : ''
+-className = postfix ? className + 'filter_container_' + postfix:className
+div.filter_container(data-filter=filter.value class=className ? className : false)
+    div.filter(class=postfix ? 'filter_' + postfix: false)
+        span.filter__title(class=postfix ? 'filter_title_' + postfix:false)=filter.title

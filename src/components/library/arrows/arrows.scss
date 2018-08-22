@@ -1,0 +1,37 @@
+.arrows {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 2px;
+  padding-left: 1px;
+  padding-bottom: 3px;
+}
+
+.arrows__left, .arrows__right {
+  display: flex;
+  align-items: center;
+}
+
+.arrows__left {
+  margin-right: 22px;
+}
+.arrows__right {
+  transform: rotate(180deg);
+}
+
+.arrows_favorite_dv {
+  margin-top: 8px;
+  margin-right: 3px;
+}
+
+@include for-custom-width-from-to(0, $tabletLandscapeUp) {
+    .arrows_favorite_sc, .arrows_favorite_dv {
+      display: none;
+    }
+}
+
+@include for-custom-width-from-to($tabletLandscapeUp, $fromOneToTwoColumnsFavoriteSc) {
+  .arrows_favorite_sc {
+    display: none;
+  }
+}

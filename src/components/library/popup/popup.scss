@@ -1,0 +1,145 @@
+
+.popup {
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.popup_container {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+.popup_buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  justify-content: space-between;
+}
+
+
+.popup__title {
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1.1px
+}
+
+.popup__header {
+  display: flex;
+  align-items: flex-start;
+}
+
+.popup__icon {
+  margin-left: auto;
+  margin-right: 0;
+  img {
+    width: auto;
+    top: -4px;
+    left: 3px;
+    position: relative;
+  }
+}
+.popup_additional_text {
+  position: relative;
+  font-size: 13px;
+  color: $additional;
+}
+
+.popup_button {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  width: 307px;
+  height: 60px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.popup_button--agree {
+   background-color: $yellowHard;
+}
+.popup_disable {
+  display: none;
+}
+
+.blur_filter {
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+}
+
+@include for-custom-width-from($mobileTimelineFromVerticalToHor) {
+
+
+  .popup_additional_text {
+    top:-13px;
+  }
+
+  .popup {
+    width: 630px;
+    height: 238px;
+  }
+  .popup_container {
+    flex-wrap: wrap;
+    padding: 26px;
+  }
+
+  .popup_buttons {
+    margin-top: 20px
+  }
+}
+
+@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor)
+{
+  .popup_manager {
+    padding: 20px;
+    align-items: flex-start;
+
+  }
+
+  .popup_additional_text {
+    top:5px;
+    color: $mainGray;
+    font-size: 12px;
+  }
+
+  .popup__title {
+    font-size: 17px;
+  }
+
+  .popup {
+  width: 334px;
+  height: 492px;
+  }
+  .popup_buttons {
+  bottom: -80px;
+  flex-wrap: wrap;
+  }
+
+  .popup__icon {
+    display: none;
+  }
+
+  .popup_button {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .popup__content {
+    height: 390px;
+  }
+
+}
+
+
+@-moz-document url-prefix() {
+.popup__content {
+margin: 15px 0;
+}
+}

@@ -1,0 +1,6 @@
+div.title(class=postfix ? 'title_' + postfix:false)
+    h3.title__text(class=postfix ? 'title_text_' + postfix:false)=title.name
+    if title.filters
+        +filters-block(title.filters, postfix)
+    if title.arrows
+        +arrows(title.arrows, postfix)

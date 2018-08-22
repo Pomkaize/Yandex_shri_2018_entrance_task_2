@@ -1,8 +1,21 @@
 doctype html
+include ../components/library/mixins
 html
     head
+        title #{self.settings.title}
+        meta(name='viewport' content='width=device-width, initial-scale=1')
         link(rel='stylesheet' href='styles.css')
     body
-        h1 Hello World? bitch
-        include ./../components/card/card
-            script(src='scripts.js')
+        header.header.container
+            include ../components/general/header/header
+        div.separator
+        section.container(class='content')
+            include ../components/general/main/main
+            include ../components/general/favorite_sc/favorite_sc
+        section.favorite_dv.container
+            include ../components/general/favorite_dv/favorite_dv
+        section.safe_footer_area.container
+        footer.footer
+                include ../components/general/footer/footer
+        +popup-block(self.popups)
+        script(src='scripts.js')

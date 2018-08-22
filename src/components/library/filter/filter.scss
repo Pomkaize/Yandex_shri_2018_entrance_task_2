@@ -1,0 +1,146 @@
+.filters_block {
+  display: flex;
+}
+
+.filter {
+  cursor: pointer;
+}
+
+.filter_favorite_dv {
+  padding: 6px 14px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: $background;
+  border-radius: 20px;
+}
+
+.filter_title_favorite_dv {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+
+@include for-tablet-landscape-up {
+
+  .filters_block_favorite_dv {
+    flex-direction: row;
+  }
+
+  .filter_container_favorite_dv {
+    margin-right: 10px;
+  }
+
+  .filter_container_favorite_dv:first-of-type {
+    margin-left: 13px;
+  }
+}
+
+@include for-custom-width-from-to(0, $tabletLandscapeUp) {
+
+  .filter_favorite_dv:not(.filter--active) {
+    display: none;
+    box-shadow: $defaultBoxShadow;
+  }
+
+  .filter_favorite_dv--open {
+    display: flex !important;
+  }
+
+  .filter_favorite_dv .filter--active {
+    display: flex;
+    box-shadow: none;
+    order: 1;
+    opacity: 1;
+    &::after {
+      transform: rotate(90deg);
+      content: '';
+      width: 14px;
+      margin-left: 7px;
+      height: 14px;
+      position: relative;
+      top: 2px;
+      @include background('arrow_left')
+    }
+  }
+
+  .filters_block_favorite_dv {
+    flex-direction: column;
+    align-items: flex-end;
+    position: absolute;
+    z-index: 2;
+    bottom: -6px;
+    right: 0;
+    border-radius: 20px;
+    box-sizing: border-box;
+    transition: all 3s ease;
+  }
+  .filter_favorite_dv {
+    margin: 5px 0 0 0;
+  }
+
+  .filter_favorite_dv:not(.filter--active) {
+    background-color: white;
+  }
+
+  .filter_favorite_dv.filter--active {
+    display: flex;
+    order: 1;
+    &::after {
+      transform: rotate(-90deg);
+      position: relative;
+      top: -2px;
+    }
+  }
+}
+
+
+.filters_block_light {
+  margin-top: 7px;
+}
+
+.filter_light {
+  padding: 6px 14px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  background-color: $background;
+  border-radius: 20px;
+  margin-right: 10px;
+  &:first-of-type {
+  margin-left: 0;
+}
+}
+
+@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor)
+{
+  .filter_light {
+    white-space: nowrap;
+  }
+
+  .filters_block_light {
+    margin-top: 20px;
+    width: calc(100% + 20px);
+    overflow-x: hidden;
+  }
+
+  .filters_block_light::after {
+    content: '';
+    display: inline-flex;
+    width: 100%;
+    overflow-x: scroll;
+    padding-bottom: 17px;
+    box-sizing: content-box;
+  }
+
+}
+.filter_title_light {
+  font-size: 13px;
+}
+
+
+
+.filter--active > .filter {
+  background-color: $yellow;
+  transition: background-color 0.3s ease;
+}

@@ -1,0 +1,17 @@
+-var postfix = popup.type;
+
+div.popup(class=postfix ? 'popup_' + postfix: false).popup_disable
+    div.popup_container(class=postfix ? 'popup_container_' + postfix: false)
+        div.popup__header
+            div.popup__title(class=postfix ? 'popup_title_' + postfix: false)=popup.title
+            div.popup__icon(class=postfix ? 'popup_icon_' + postfix: false)
+                +picture({name:popup.icon, custom:true})
+        if popup.additional
+            div.popup_additional_text(class=postfix ? 'popup_additional_menu_' + postfix: false)=popup.additional
+        if popup.menu
+            +filters-block(popup.menu, postfix)
+        div.popup__content(class=postfix ? 'popup_content_' + postfix: false)
+            +range('tet',postfix)
+    div.popup_buttons(class=postfix ? 'popup_buttons_' + postfix: false)
+        div.button.popup_button.popup_button--agree Применить
+        div.button.popup_button Закрыть

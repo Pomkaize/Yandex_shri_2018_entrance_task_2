@@ -1,0 +1,317 @@
+/* the most involved file */
+
+
+/* main section */
+.card {
+  border-radius: 20px;
+}
+
+
+.card_main {
+  width: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  height: 120px;
+  position: relative;
+  background-color: $background;
+  padding: 14px;
+}
+
+.card_title_main {
+  font-size: 13.5px;
+  letter-spacing: 0.01em;
+  font-weight: bold;
+  color: $mainGray;
+  height: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.additional_text_main {
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+  font-weight: normal;
+  font-size: 11.2px;
+  color: $additional;
+}
+
+.card_fake {
+  cursor: pointer;
+}
+
+@include for-custom-width-from($mobileTimelineFromVerticalToHor)
+{
+  .cards_container_main {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    margin-right: -15px;
+    overflow: hidden;
+  }
+  .cards_block_main {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 17px;
+    box-sizing: content-box;
+  }
+
+  /* fake card in main block */
+  .card_fake_main {
+    height: 120px;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    background-color: $background;
+    text-align: center;
+    position: absolute;
+    box-shadow: 0 -4px 8px 0 rgba(197, 186, 186, 0.5);
+    bottom: -80px;
+    &>img {
+      margin-top: 14px;
+    }
+  }
+
+  .card_fake_main--disable {
+    display: none;
+  }
+
+  .card_main {
+    margin-bottom: 15px;
+    &:first-of-type {
+      margin-top: 20px;
+    }
+  }
+}
+
+@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor)
+{
+   .cards_container_main {
+     width: calc(100% + 20px);
+     height: 130px;
+     overflow-y: hidden;
+     overflow-x: hidden;
+   }
+  .cards_block_main {
+    display: inline-flex;
+    width: 100%;
+    overflow-x: scroll;
+    padding-bottom: 17px;
+    box-sizing: content-box;
+  }
+  .card_fake_main {
+      display: none;
+     }
+  .card_main {
+    margin-right: 20px;
+  }
+}
+
+
+/* favorite scenarios*/
+
+.cards_block_favorite_sc {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card_favorite_sc {
+  min-width: 200px;
+  width: 200px;
+  flex-shrink: 0;
+  height: 100px;
+  padding: 14px;
+  cursor: pointer;
+  background-color: $background;
+}
+
+.card_favorite_sc--active {
+    background-color: white;
+    box-shadow: $defaultBoxShadow
+}
+
+.card_favorite_sc--overflow {
+  display: none;
+}
+
+@include for-custom-width-from-to(0, $tabletLandscapeUp) {
+
+  .cards_container_favorite_sc {
+    width: calc(100vw - (#{$containerSmallPadding}));
+    overflow: hidden;
+    height: 110px;
+  }
+
+  .cards_block_favorite_sc {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: scroll;
+    padding-bottom: 17px;
+    box-sizing: content-box;
+  }
+  .card_favorite_sc {
+    margin-right: 15px;
+  }
+}
+
+@include for-custom-width-from-to($tabletLandscapeUp, $fromOneToTwoColumnsFavoriteSc) {
+    .cards_container_favorite_sc {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      margin-right: -34px;
+      overflow: hidden;
+    }
+
+    .cards_block_favorite_sc {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      width: 100%;
+      height: 100%;
+      overflow-y: scroll;
+      padding-right: 17px;
+      box-sizing: content-box;
+    }
+
+    .card_favorite_sc {
+      margin-bottom: 15px;
+    }
+}
+
+
+@include for-custom-width-from-to($fromOneToTwoColumnsFavoriteSc, $desktopUp) {
+
+  .cards_block_favorite_sc {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card_favorite_sc {
+    margin-right: 15px;
+    margin-bottom: 0;
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+    &:nth-child(n) {
+      margin-bottom: 15px;
+    }
+  }
+}
+
+@include for-desktop-up {
+  .cards_block_favorite_sc {
+    width: calc(100% + 20px);
+  }
+  .card_favorite_sc {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    &:nth-child(2n) {
+      margin-right: 15px;
+    }
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+}
+
+
+.card_favorite_sc--active {
+  background-color: #fff;
+}
+
+.card_title_favorite_sc {
+  @extend .card_title_main;
+  transition: box-shadow 0.1s ease;
+}
+
+.additional_text_favorite_sc {
+  @extend .additional_text_main
+}
+
+.card_fake_favorite_sc {
+  display: none;
+}
+
+
+@include for-custom-width-from-to($tabletLandscapeUp, $fromOneToTwoColumnsFavoriteSc)
+{
+  .card_fake_favorite_sc {
+    height: 120px;
+    width: 200px;
+    margin: 0;
+    display: block;
+    padding: 0;
+    background-color: $background;
+    text-align: center;
+    position: absolute;
+    box-shadow: 0 -4px 8px 0 rgba(197, 186, 186, 0.5);
+    bottom: -80px;
+    &>img {
+      margin-top: 14px;
+    }
+  }
+
+  .card_fake_favorite_sc--disable {
+    display: none;
+  }
+
+}
+
+
+/* favorite devices */
+
+.cards_container_favorite_dv {
+/* 40px - padding*/
+  width: calc(100vw - (#{$containerPadding}));
+  height: 130px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+
+@include for-custom-width-from-to(0, $containerSmallPaddingBreakpoint)
+{
+  .cards_container_favorite_dv {
+    width: calc(100vw - (#{$containerSmallPadding}));
+  }
+}
+
+@include for-desktop-up {
+  .cards_container_favorite_dv {
+    width: calc(50vw + #{$desktopUp}/2 - #{$containerPadding});
+  }
+}
+
+.cards_block_favorite_dv {
+  display: inline-flex;
+  width: 100%;
+  overflow-x: scroll;
+  padding-bottom: 17px;
+  box-sizing: content-box;
+}
+.card_favorite_dv {
+  @extend .card_main;
+  will-change: padding, margin, max-width, opacity;
+  margin-right: 15px;
+  margin-bottom: 0 ;
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+
+.card_favorite_dv--disabled, .card_favorite_sc--disabled {
+  opacity:0;
+  max-width: 0;
+  margin: 0;
+  padding: 0;
+  display: none !important;
+}
+
+.card_title_favorite_dv {
+  @extend .card_title_main;
+}
+
+.additional_text_favorite_dv {
+  @extend .additional_text_main
+}

@@ -1,0 +1,22 @@
+.hello_main {
+  color: $mainGray;
+}
+
+.hello_user_main {
+  font-size: 26px;
+}
+
+.hello_main > .summary {
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor) {
+  .hello_user_main {
+    font-size: 17px;
+  }
+  .hello_main > .summary {
+    margin-top: 6px;
+    font-size: 11px;
+  }
+}

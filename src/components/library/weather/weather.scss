@@ -1,0 +1,47 @@
+.weather_block, .weather {
+  display: flex;
+}
+
+.weather_main {
+  margin-right: 17px;
+}
+
+.weather_block_main {
+  margin-top: 26px;
+}
+
+.weather_title_main {
+  color: $additional;
+  font-size: 13px;
+}
+
+.weather_temperature_main {
+    margin-top: 6px;
+    color: $mainGray;
+    font-size: 35px;
+}
+.weather_icon_main {
+  margin-top: 26px;
+  margin-left: 5px;
+}
+
+@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor) {
+  .weather_temperature_main {
+    font-size: 24px;
+  }
+  .weather_title_main {
+    color: $additional;
+    font-size: 11px;
+  }
+  .weather_block_main {
+    margin-top: 16px;
+  }
+  .weather_icon_main {
+    margin-top: 24px;
+    margin-left: -5px;
+    & img {
+      width: auto;
+      height: 20px;
+    }
+  }
+}

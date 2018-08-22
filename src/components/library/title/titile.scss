@@ -1,0 +1,28 @@
+.title {
+  display: flex;
+  padding-top: 2px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.title__text {
+  font-size: 17px;
+}
+
+.title_main {
+  padding-top: 1px;
+}
+
+.title_favorite_dv {
+  padding-top: 0;
+  align-items: center;
+}
+
+@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor) {
+  .title_main {
+    display: none;
+  }
+  .title_favorite_dv {
+    margin-top: 23px;
+  }
+}

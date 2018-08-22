@@ -1,0 +1,4 @@
+div.hello(class=postfix ? 'hello_' + postfix:false)
+    h2.hello__user(class=postfix ? 'hello_user_' + postfix:false) Привет, #{user.name}!
+    if user.summary
+        p.summary #{user.summary}

@@ -1,0 +1,9 @@
+div.weather(class=postfix ? 'weather_' + postfix:false)
+    div.weather__text(class=postfix ? 'weather_text_' + postfix:false)
+        p.weather__title(class=postfix ? 'weather_title_' + postfix:false)=weather.title
+        h4.weather__temperature(class=postfix ? 'weather_temperature_' + postfix:false)=weather.title=weather.temperature
+    if weather.image
+        div.weather__icon(class=postfix ? 'weather_icon_' + postfix:false)
+            +picture({name:'cloud-drizzle', svg: false})
+
+

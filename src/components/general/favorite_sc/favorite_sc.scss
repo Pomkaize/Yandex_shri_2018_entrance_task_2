@@ -1,0 +1,18 @@
+
+@include for-tablet-landscape-up
+{
+    .favorite_sc {
+        width: 50%;
+        margin-left: 26px;
+    }
+    .favorite-sc__scenaries {
+        height: 330px;
+    }
+}
+
+
+@include for-custom-width-from-to(0, $tabletLandscapeUp) {
+    .favorite_sc {
+        width: 100%;
+    }
+}

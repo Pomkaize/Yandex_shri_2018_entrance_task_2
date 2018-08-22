@@ -1,0 +1,10 @@
+-var imageName = card.active ? card.image + '_2' : card.image
+    if !card.fake
+        div.card(data-type=card.type ? card.type : false class=postfix ? ' card_' + postfix: false)
+            +picture({name: imageName, svg: false })
+            div.card__title(class=postfix ? 'card_title_' + postfix: false)=card.title
+                if card.additional
+                    span.additional_text(class=postfix ? 'additional_text_' + postfix: false)=card.additional
+    else
+        div.card.card_fake(data-type=card.type ? card.type : false class=postfix ? 'card_fake_' + postfix: false)
+            +picture({name: imageName, svg: false})

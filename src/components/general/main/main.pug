@@ -1,0 +1,9 @@
+-var postfix = 'main'
+div.main
+    +title(self.main.title, postfix)
+    div.main__card.card
+        div.main__resume
+            +hello(self.main.user, postfix)
+            +weather-block(self.main.weather, postfix)
+        div.main__timeline
+            +cards-block(self.main.cards, postfix)

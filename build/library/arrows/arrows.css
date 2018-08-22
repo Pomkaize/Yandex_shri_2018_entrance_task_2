@@ -1,0 +1,17 @@
+.arrows {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 2px;
+  padding-left: 1px;
+  padding-bottom: 3px; }
+
+.arrows__left, .arrows__right {
+  display: flex;
+  align-items: center; }
+
+.arrows__left {
+  margin-right: 22px; }
+
+.arrows__right {
+  transform: rotate(180deg); }

@@ -1,0 +1,9 @@
+-var imagesFolder = self.settings.imagesFolder
+
+-var x1 = imagesFolder + picture.name + '@1x.png'
+-var x2 = imagesFolder + picture.name + '@2x.png 2x'
+-var srcSet = x1 + ', ' + x2;
+if picture.custom
+    img(src=imagesFolder + picture.name alt=picture.name)
+else
+    img(src=x1 alt=picture.name srcset=srcSet)

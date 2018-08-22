@@ -1,0 +1,24 @@
+/* device sizes */
+$phoneWidthDown: 599px;
+$tabletPortraitUp: 600px;
+$tabletLandscapeUp:900px;
+$desktopUp: 1366px;
+
+
+
+/* custom breakpoints  */
+$mobileTimelineFromVerticalToHor: 630px;
+$containerSmallPaddingBreakpoint: 920px;
+$fromOneToTwoColumnsFavoriteSc: 1160px;
+
+
+
+$bigDesktop: 1800px;
+
+/* page params */
+$containerPadding: 40px;
+$containerSmallPadding: $containerPadding/2;
+$footerHeight: 64px;
+$headerMinHeight: 64px;
+$headerBigHeight: 92px;
+$defaultBoxShadow: 0 2px 6px 0 rgba(197,186,186,0.50);
