@@ -1,6 +1,6 @@
--var imageName = card.active ? card.image + '_2' : card.image
+-var imageName = card.active ? card.image + '_2' : card.image;
     if !card.fake
-        div.card(data-type=card.type ? card.type : false class=postfix ? ' card_' + postfix: false)
+        div.card(data-type=card.type ? card.type:false data-popup=card.popup ? card.popup:false class=(postfix ? ' ' +'card_' + postfix: false))
             +picture({name: imageName, svg: false })
             div.card__title(class=postfix ? 'card_title_' + postfix: false)=card.title
                 if card.additional

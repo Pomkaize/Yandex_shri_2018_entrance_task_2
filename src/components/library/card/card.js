@@ -1,7 +1,10 @@
 var vParams = globalHelper.getViewPortSizes(),
     favoriteDv = document.getElementsByClassName('cards_block_favorite_dv')[0],
     main = document.getElementsByClassName('cards_block_main')[0],
-    favoriteSc = document.getElementsByClassName('cards_block_favorite_sc')[0];
+    favoriteSc = document.getElementsByClassName('cards_block_favorite_sc')[0],
+    temperaturePopupMenu = document.getElementsByClassName('filters_block_temperature')[0],
+    lightPopupMenu = document.getElementsByClassName('filters_block_light')[0],
+    balloonPopupMenu = document.getElementsByClassName('filters_block_balloon')[0];
 
 
 $(document).ready(function() {
@@ -19,11 +22,13 @@ $(window).resize(function () {
 
 
 
+
 function horizontalScrollManager() {
 
     var listeningFavoriteSc = globalHelper.checkScrollHandler(favoriteSc),
         listeningMain = globalHelper.checkScrollHandler(main),
-        listeningFavoriteDv = globalHelper.checkScrollHandler(favoriteDv);
+        listeningFavoriteDv = globalHelper.checkScrollHandler(favoriteDv),
+        listeningPopups = globalHelper.checkScrollHandler(temperaturePopupMenu);
 
     if (vParams[0] < 900 && !listeningFavoriteSc) {
         globalHelper.listenHorizontalScroll(favoriteSc)
@@ -42,6 +47,14 @@ function horizontalScrollManager() {
     if (!listeningFavoriteDv) {
         globalHelper.listenHorizontalScroll(favoriteDv)
     }
+
+    if( !listeningPopups )
+    {
+        globalHelper.listenHorizontalScroll(temperaturePopupMenu);
+        globalHelper.listenHorizontalScroll(lightPopupMenu);
+        globalHelper.listenHorizontalScroll(balloonPopupMenu);
+    }
+
 }
 
 
@@ -98,33 +111,7 @@ $(".card_favorite_sc").on('click', function () {
    $(this).toggleClass('card_favorite_sc--active')
 });
 
-function cardsSwiper(cards, direction)
-{
 
-       var  toHidden = cards.filter(function() { return $(this).css("display") != "none" }),
-        toShow = cards.filter(function() { return $(this).css("display") == "none" });
-
-    hideElements(toHidden);
-    showElements(toShow);
-
-    function hideElements(elements)
-    {
-        elements.addClass('animation_cards_slide_off_' + direction);
-        setTimeout(function() {
-            elements.addClass('card_favorite_sc--overflow');
-            elements.removeClass('animation_cards_slide_off_' + direction);
-        }, 500)
-    }
-
-    function showElements(elements) {
-        elements.removeClass('animation_cards_slide_off_' + direction);
-        elements.removeClass('card_favorite_sc--overflow');
-        elements.addClass('animation_cards_slide_on_' + direction);
-        setTimeout(function() {
-            elements.removeClass('animation_cards_slide_on_' + direction);
-        }, 500)
-    }
-}
 
 
 
@@ -137,14 +124,13 @@ function favoriteScManager() {
             return e > 8
         }).addClass('card_favorite_sc--overflow');
         if((overflowCards.length) <= 9 && cards.length >= 9) {
-            console.log('try');
             cards.filter(function(e) {
                 return e < 9
             }).removeClass('card_favorite_sc--overflow');
         }
 
     }
-    else if ((vParams[0] >= 1167 && vParams[0] < 1366)) {
+    else if ((vParams[0] >= 1160 && vParams[0] < 1366)) {
         if(cards.first().css('display') == 'block')
         {
             cards.filter(function(e) {
@@ -157,10 +143,26 @@ function favoriteScManager() {
             }).removeClass('card_favorite_sc--overflow')
         }
     }
-    else if((vParams[0] <= 1166) && cards)
+    else if((vParams[0] < 1160) && cards)
     {
         cards.filter(function(e) {
             return $(this).css('display') === 'none';
         }).removeClass('card_favorite_sc--overflow')
     }
 }
+
+$(favoriteDv).children().on('click', function() {
+    var cardContent = $(this).clone(),
+        popupType = $(this).data('popup');
+
+    if(popupType) {
+        var currentPopup = $('.popup_' + popupType),
+            additionalText = cardContent.find('.card__title').children().text(),
+            title = cardContent.find('.card__title').children().remove().end().text();
+
+
+        currentPopup.find('.popup__title').text(title);
+        currentPopup.find('.popup_additional_text').text(additionalText);
+        popup.toggle(currentPopup)
+    }
+});

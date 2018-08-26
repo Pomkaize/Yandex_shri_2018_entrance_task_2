@@ -1,7 +1,7 @@
 module.exports = {
     settings: {
       title: 'Яндекс дом',
-      copyright: "© 2001-2017 ООО «Яндекс»",
+      copyright: "© 2001-2018 ООО «Яндекс»",
       imagesFolder: 'images/'  // path in build folder
     },
     header: {
@@ -70,16 +70,17 @@ module.exports = {
             {
                 title: 'Выключить весь свет в доме и во дворе',
                 image: 'icon_sun',
-                active: true
+                active: true,
             },
            {
                 title: 'Выключить весь свет в доме и во дворе',
                 image: 'icon_sun',
-                active: true
+                active: true,
+                overflow: true,
             }, {
                 title: 'Выключить весь свет в доме и во дворе',
                 image: 'icon_sun',
-                active: true
+                active: true,
             },
             {
                 title: 'Я ухожу',
@@ -88,7 +89,7 @@ module.exports = {
             {
                 title: 'Включить свет в коридоре',
                 image: 'icon_sun',
-                active: true
+                active: true,
             },
             {
                 title: 'Набрать горячую ванну',
@@ -99,7 +100,7 @@ module.exports = {
             {
                 title: 'Сделать пол тёплым во всей квартире',
                 image: 'icon_temperature',
-                active: true
+                active: true,
             },
             {
                 title: 'Сверстать макет',
@@ -108,12 +109,12 @@ module.exports = {
             {
                 title: 'Вскипятить чайник',
                 image: 'icon_temperature',
-                active: true
+                active: true,
             },
             {
                 title: 'Поступить в ШРИ',
                 image: 'icon_temperature',
-                active: true
+                active: true,
             },
             {
                 fake:true,
@@ -160,6 +161,7 @@ module.exports = {
                 image: 'icon_sun',
                 additional: 'Включено',
                 type: 'lights',
+                popup: 'light',
                 active: true
             },
             {
@@ -172,12 +174,14 @@ module.exports = {
                 title: 'Elgato Eve Degree Connected',
                 image: 'icon_temperature',
                 additional: 'Выключено до 17:00',
+                popup: 'temperature',
                 type: 'hall'
             },
             {
                 title: 'LIFX mini Day & Dusk A60 E27',
                 image: 'icon_sun',
                 additional: 'Включится в 17:00',
+                popup: 'light',
                 type: 'lights'
             },
             {
@@ -185,20 +189,31 @@ module.exports = {
                 image: 'icon_sun',
                 additional: 'Включится в 17:00',
                 active: true,
-                type: 'hall'
+                type: 'hall',
+                popup: 'temperature'
             },
             {
                 title: 'Philips Zhirui',
                 image: 'icon_sun',
                 additional: 'Включится в 17:00',
-                type: 'lights'
+                type: 'lights',
+                popup: 'light'
             },
             {
                 title: 'Xiaomi Mi Air Purifier 2S',
                 image: 'icon_sun',
                 additional: 'Включится в 17:00',
                 active: true,
-                type: 'kitchen'
+                type: 'kitchen',
+                popup: 'light'
+            },
+            {
+                title: 'Xiaomi Warm Floor',
+                image: 'icon_temperature',
+                additional: 'Включено',
+                active: true,
+                type: 'hall',
+                popup: 'balloon'
             },
         ]
     },
@@ -224,7 +239,8 @@ module.exports = {
     },
     popups: [
         {
-            type: 'light',
+            type: 'range',
+            postfix: 'light',
             icon: 'icon_sun@2x.png',
             title: 'Xiaomi Yeelight LED Smart Bulb',
             additional: 'Включится в 18:00',
@@ -249,28 +265,36 @@ module.exports = {
             ]
         },
         {
-            type: 'temperature',
+            type: 'range',
+            postfix: 'temperature',
             title: 'Elgato Eve Degree Connected',
-            icon: 'icon',
+            icon: 'icon_temperature_2@2x.png',
             additional: 'Включено',
             menu: [
                 {
-                    name: 'Вручную',
-                    href: '#'
+                    title: 'Вручную',
+                    active: true,
+                    value: 'handle'
                 },
                 {
-                    name: 'Тепло',
-                    href: '#'
+                    title: 'Холодно',
+                    value: 'cold'
                 },
                 {
-                    name: 'Жарко',
-                    href: '#'
+                    title: 'Тепло',
+                    value: 'warm'
+                },
+                {
+                    title: 'Жарко',
+                    value: 'hot'
                 }
             ]
         },
         {
             type: 'balloon',
-            icon: 'icon',
+            postfix: 'balloon',
+            icon: 'icon_temperature_2@2x.png',
+            title: 'Xiaomi Warm Floor',
             additional: 'Включено',
         },
 

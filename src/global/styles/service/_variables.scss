@@ -8,6 +8,7 @@ $desktopUp: 1366px;
 
 /* custom breakpoints  */
 $mobileTimelineFromVerticalToHor: 630px;
+$popupMobile: 650px;
 $containerSmallPaddingBreakpoint: 920px;
 $fromOneToTwoColumnsFavoriteSc: 1160px;
 
@@ -22,3 +23,9 @@ $footerHeight: 64px;
 $headerMinHeight: 64px;
 $headerBigHeight: 92px;
 $defaultBoxShadow: 0 2px 6px 0 rgba(197,186,186,0.50);
+
+/* animations */
+$popupAnimationTime: 0.3s;
+$filterAnimationTime: 0.3s;
+$fakeCardAnimation: 0.3s;
+$favoriteScAnimationTime: 0.5s;

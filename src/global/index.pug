@@ -3,6 +3,7 @@ include ../components/library/mixins
 html
     head
         title #{self.settings.title}
+        meta(charset="UTF-8")
         meta(name='viewport' content='width=device-width, initial-scale=1')
         link(rel='stylesheet' href='styles.css')
     body
@@ -18,4 +19,4 @@ html
         footer.footer
                 include ../components/general/footer/footer
         +popup-block(self.popups)
-        script(src='scripts.js')
+    script(src='scripts.js')

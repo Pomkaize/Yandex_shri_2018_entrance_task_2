@@ -3,7 +3,6 @@
   display: flex;
   width: 630px;
 
-  padding: 0 0 0 20px;
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -11,10 +10,11 @@
 }
 .main__resume {
   padding: 26px 0 0 5px;
+  margin-left: 20px;
 }
 .main__timeline {
   margin-left: auto;
-  margin-right: 0;
+  margin-right: 20px;
 }
 
 
@@ -68,4 +68,9 @@
   .main {
     min-width: 630px;
   }
+}
+
+@include for-custom-width-from($mobileTimelineFromVerticalToHor)
+{
+
 }

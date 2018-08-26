@@ -3,6 +3,7 @@
 <html>
   <head>
     <title>Яндекс дом</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -141,21 +142,13 @@
       <div class="favorite_dv_container">
         <div class="title title_favorite_dv">
           <h3 class="title__text title_text_favorite_dv">Избранные устройства</h3>
-          <div class="filters_block filters_block_favorite_dv">
-            <div class="filter_container filter--active filter_container_favorite_dv" data-filter="all">
-              <div class="filter filter_favorite_dv"><span class="filter__title filter_title_favorite_dv">Все</span></div>
-            </div>
-            <div class="filter_container filter_container_favorite_dv" data-filter="kitchen">
-              <div class="filter filter_favorite_dv"><span class="filter__title filter_title_favorite_dv">Кухня</span></div>
-            </div>
-            <div class="filter_container filter_container_favorite_dv" data-filter="hall">
-              <div class="filter filter_favorite_dv"><span class="filter__title filter_title_favorite_dv">Зал</span></div>
-            </div>
-            <div class="filter_container filter_container_favorite_dv" data-filter="lights">
-              <div class="filter filter_favorite_dv"><span class="filter__title filter_title_favorite_dv">Лампочки</span></div>
-            </div>
-            <div class="filter_container filter_container_favorite_dv" data-filter="cameras">
-              <div class="filter filter_favorite_dv"><span class="filter__title filter_title_favorite_dv">Камеры</span></div>
+          <div class="filters_container filters_container_favorite_dv">
+            <div class="filters_block filters_block_favorite_dv">
+              <div class="filter filter_favorite_dv--active filter_favorite_dv" data-filter="all"><span class="filter__title filter_title_favorite_dv">Все</span></div>
+              <div class="filter filter_favorite_dv" data-filter="kitchen"><span class="filter__title filter_title_favorite_dv">Кухня</span></div>
+              <div class="filter filter_favorite_dv" data-filter="hall"><span class="filter__title filter_title_favorite_dv">Зал</span></div>
+              <div class="filter filter_favorite_dv" data-filter="lights"><span class="filter__title filter_title_favorite_dv">Лампочки</span></div>
+              <div class="filter filter_favorite_dv" data-filter="cameras"><span class="filter__title filter_title_favorite_dv">Камеры</span></div>
             </div>
           </div>
           <div class="arrows arrows_favorite_dv">
@@ -168,7 +161,7 @@
         <div class="favorite-dv__devices">
           <div class="card_container cards_container_favorite_dv">
             <div class="cards_block cards_block_favorite_dv">
-              <div class="card  card_favorite_dv" data-type="lights"><img src="images/icon_sun_2@1x.png" alt="icon_sun_2" srcset="images/icon_sun_2@1x.png, images/icon_sun_2@2x.png 2x">
+              <div class="card  card_favorite_dv" data-type="lights" data-popup="light"><img src="images/icon_sun_2@1x.png" alt="icon_sun_2" srcset="images/icon_sun_2@1x.png, images/icon_sun_2@2x.png 2x">
                 <div class="card__title card_title_favorite_dv">Xiaomi Yeelight LED Smart Bulb<span class="additional_text additional_text_favorite_dv">Включено</span>
                 </div>
               </div>
@@ -176,24 +169,28 @@
                 <div class="card__title card_title_favorite_dv">D-Link Omna 180 cam<span class="additional_text additional_text_favorite_dv">Включится в 17:00</span>
                 </div>
               </div>
-              <div class="card  card_favorite_dv" data-type="hall"><img src="images/icon_temperature@1x.png" alt="icon_temperature" srcset="images/icon_temperature@1x.png, images/icon_temperature@2x.png 2x">
+              <div class="card  card_favorite_dv" data-type="hall" data-popup="temperature"><img src="images/icon_temperature@1x.png" alt="icon_temperature" srcset="images/icon_temperature@1x.png, images/icon_temperature@2x.png 2x">
                 <div class="card__title card_title_favorite_dv">Elgato Eve Degree Connected<span class="additional_text additional_text_favorite_dv">Выключено до 17:00</span>
                 </div>
               </div>
-              <div class="card  card_favorite_dv" data-type="lights"><img src="images/icon_sun@1x.png" alt="icon_sun" srcset="images/icon_sun@1x.png, images/icon_sun@2x.png 2x">
+              <div class="card  card_favorite_dv" data-type="lights" data-popup="light"><img src="images/icon_sun@1x.png" alt="icon_sun" srcset="images/icon_sun@1x.png, images/icon_sun@2x.png 2x">
                 <div class="card__title card_title_favorite_dv">LIFX mini Day &amp; Dusk A60 E27<span class="additional_text additional_text_favorite_dv">Включится в 17:00</span>
                 </div>
               </div>
-              <div class="card  card_favorite_dv" data-type="hall"><img src="images/icon_sun_2@1x.png" alt="icon_sun_2" srcset="images/icon_sun_2@1x.png, images/icon_sun_2@2x.png 2x">
+              <div class="card  card_favorite_dv" data-type="hall" data-popup="temperature"><img src="images/icon_sun_2@1x.png" alt="icon_sun_2" srcset="images/icon_sun_2@1x.png, images/icon_sun_2@2x.png 2x">
                 <div class="card__title card_title_favorite_dv">Xiaomi Mi Air Purifier 2S<span class="additional_text additional_text_favorite_dv">Включится в 17:00</span>
                 </div>
               </div>
-              <div class="card  card_favorite_dv" data-type="lights"><img src="images/icon_sun@1x.png" alt="icon_sun" srcset="images/icon_sun@1x.png, images/icon_sun@2x.png 2x">
+              <div class="card  card_favorite_dv" data-type="lights" data-popup="light"><img src="images/icon_sun@1x.png" alt="icon_sun" srcset="images/icon_sun@1x.png, images/icon_sun@2x.png 2x">
                 <div class="card__title card_title_favorite_dv">Philips Zhirui<span class="additional_text additional_text_favorite_dv">Включится в 17:00</span>
                 </div>
               </div>
-              <div class="card  card_favorite_dv" data-type="kitchen"><img src="images/icon_sun_2@1x.png" alt="icon_sun_2" srcset="images/icon_sun_2@1x.png, images/icon_sun_2@2x.png 2x">
+              <div class="card  card_favorite_dv" data-type="kitchen" data-popup="light"><img src="images/icon_sun_2@1x.png" alt="icon_sun_2" srcset="images/icon_sun_2@1x.png, images/icon_sun_2@2x.png 2x">
                 <div class="card__title card_title_favorite_dv">Xiaomi Mi Air Purifier 2S<span class="additional_text additional_text_favorite_dv">Включится в 17:00</span>
+                </div>
+              </div>
+              <div class="card  card_favorite_dv" data-type="hall" data-popup="balloon"><img src="images/icon_temperature_2@1x.png" alt="icon_temperature_2" srcset="images/icon_temperature_2@1x.png, images/icon_temperature_2@2x.png 2x">
+                <div class="card__title card_title_favorite_dv">Xiaomi Warm Floor<span class="additional_text additional_text_favorite_dv">Включено</span>
                 </div>
               </div>
             </div>
@@ -215,7 +212,7 @@
               </ul>
             </div>
           </div>
-          <div class="menu__footer_copyright">© 2001-2017 ООО «Яндекс»</div>
+          <div class="menu__footer_copyright">© 2001-2018 ООО «Яндекс»</div>
         </div>
       </div>
     </footer>
@@ -228,24 +225,20 @@
             </div>
           </div>
           <div class="popup_additional_text popup_additional_menu_light">Включится в 18:00</div>
-          <div class="filters_block filters_block_light">
-            <div class="filter_container filter--active filter_container_light" data-filter="handle">
-              <div class="filter filter_light"><span class="filter__title filter_title_light">Вручную</span></div>
-            </div>
-            <div class="filter_container filter_container_light" data-filter="daylight">
-              <div class="filter filter_light"><span class="filter__title filter_title_light">Дневной свет</span></div>
-            </div>
-            <div class="filter_container filter_container_light" data-filter="nightlight">
-              <div class="filter filter_light"><span class="filter__title filter_title_light">Вечерний свет</span></div>
-            </div>
-            <div class="filter_container filter_container_light" data-filter="sunset">
-              <div class="filter filter_light"><span class="filter__title filter_title_light">Рассвет</span></div>
+          <div class="filters_container filters_container_light">
+            <div class="filters_block filters_block_light">
+              <div class="filter filter_light--active filter_light" data-filter="handle"><span class="filter__title filter_title_light">Вручную</span></div>
+              <div class="filter filter_light" data-filter="daylight"><span class="filter__title filter_title_light">Дневной свет</span></div>
+              <div class="filter filter_light" data-filter="nightlight"><span class="filter__title filter_title_light">Вечерний свет</span></div>
+              <div class="filter filter_light" data-filter="sunset"><span class="filter__title filter_title_light">Рассвет</span></div>
             </div>
           </div>
           <div class="popup__content popup_content_light">
             <div class="input_range input_range_light">
               <div class="input_range__container input_range__container_light">
                 <input type="range">
+                <div class="control_left control_left_light"></div>
+                <div class="control_right control_right_light"></div>
               </div>
             </div>
           </div>
@@ -259,25 +252,25 @@
         <div class="popup_container popup_container_temperature">
           <div class="popup__header">
             <div class="popup__title popup_title_temperature">Elgato Eve Degree Connected</div>
-            <div class="popup__icon popup_icon_temperature"><img src="images/icon" alt="icon">
+            <div class="popup__icon popup_icon_temperature">
+              <div class="popup_icon_subtext">+28</div><img src="images/icon_temperature_2@2x.png" alt="icon_temperature_2@2x.png">
             </div>
           </div>
           <div class="popup_additional_text popup_additional_menu_temperature">Включено</div>
-          <div class="filters_block filters_block_temperature">
-            <div class="filter_container filter_container_temperature">
-              <div class="filter filter_temperature"><span class="filter__title filter_title_temperature"></span></div>
-            </div>
-            <div class="filter_container filter_container_temperature">
-              <div class="filter filter_temperature"><span class="filter__title filter_title_temperature"></span></div>
-            </div>
-            <div class="filter_container filter_container_temperature">
-              <div class="filter filter_temperature"><span class="filter__title filter_title_temperature"></span></div>
+          <div class="filters_container filters_container_temperature">
+            <div class="filters_block filters_block_temperature">
+              <div class="filter filter_temperature--active filter_temperature" data-filter="handle"><span class="filter__title filter_title_temperature">Вручную</span></div>
+              <div class="filter filter_temperature" data-filter="cold"><span class="filter__title filter_title_temperature">Холодно</span></div>
+              <div class="filter filter_temperature" data-filter="warm"><span class="filter__title filter_title_temperature">Тепло</span></div>
+              <div class="filter filter_temperature" data-filter="hot"><span class="filter__title filter_title_temperature">Жарко</span></div>
             </div>
           </div>
           <div class="popup__content popup_content_temperature">
             <div class="input_range input_range_temperature">
               <div class="input_range__container input_range__container_temperature">
                 <input type="range">
+                <div class="control_left control_left_temperature">+10</div>
+                <div class="control_right control_right_temperature">+30</div>
               </div>
             </div>
           </div>
@@ -290,15 +283,19 @@
       <div class="popup popup_balloon popup_disable">
         <div class="popup_container popup_container_balloon">
           <div class="popup__header">
-            <div class="popup__title popup_title_balloon"></div>
-            <div class="popup__icon popup_icon_balloon"><img src="images/icon" alt="icon">
+            <div class="popup__title popup_title_balloon">Xiaomi Warm Floor</div>
+            <div class="popup__icon popup_icon_balloon">
+              <div class="popup_icon_subtext">+28</div><img src="images/icon_temperature_2@2x.png" alt="icon_temperature_2@2x.png">
             </div>
           </div>
           <div class="popup_additional_text popup_additional_menu_balloon">Включено</div>
           <div class="popup__content popup_content_balloon">
-            <div class="input_range input_range_balloon">
-              <div class="input_range__container input_range__container_balloon">
-                <input type="range">
+            <div class="balloon balloon_balloon">
+              <div class="balloon_container balloon_container_balloon">
+                <div class="balloon_controller balloon_controller_balloon">
+                  <div class="balloon_js_container balloon_js_container_balloon"></div>
+                  <div class="fake"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -308,7 +305,8 @@
           <div class="button popup_button">Закрыть</div>
         </div>
       </div>
+      <div class="popup_background"></div>
     </div>
-    <script src="scripts.js"></script>
   </body>
+  <script src="scripts.js"></script>
 </html>

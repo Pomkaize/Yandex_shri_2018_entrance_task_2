@@ -1,0 +1,85 @@
+.balloon {
+  width: 100%;
+  display: flex;
+  position: relative;
+  top:-23px;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.balloon_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
+  width: 221px;
+  top:-3;
+  height: 221px;
+}
+
+.balloon_value {
+  font-size: 62px;
+  font-weight: bold;
+  color:$mainGray;
+  pointer-events: none;
+  @extend .unselectable;
+}
+
+.balloon_controller {
+  display: flex;
+  z-index: 5;
+  position: relative;
+  top:3px;
+  align-items: center;
+  justify-content: center;
+  width: 178px;
+  height: 178px;
+  border-radius: 89px;
+  background-size: contain;
+}
+.fake {
+  display: flex;
+  z-index: 4;
+  position: absolute;
+  top:-4px;
+  left:0;
+  align-items: center;
+  justify-content: center;
+  width: 178px;
+  height: 178px;
+  border-radius: 89px;
+  background-color: transparent;
+  box-shadow: 0 2px 4px 0 rgba(134,121,71,0.45);
+  background-size: contain;
+}
+.balloon_js_container {
+  top:-3px;
+}
+
+.rs-control .rs-range-color {
+  background-color: white;
+  @include background('Oval');
+}
+.rs-control .rs-path-color {
+  @include background-custom('OvalCustom.png');
+}
+.rs-control .rs-handle {
+  @include background_custom('icon_arrow.svg');
+  background-position: center center;
+  background-color: transparent !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  right:-15px;
+  transform: rotate(270deg);
+}
+.rs-control .rs-bg-color {
+  z-index: 3;
+  background-color: white !important;
+}
+
+.rs-tooltip .rs-tooltip-text {
+
+}

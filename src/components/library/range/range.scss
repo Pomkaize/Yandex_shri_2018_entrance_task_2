@@ -1,10 +1,6 @@
-// Styling Cross-Browser Compatible Range Inputs with Sass
-// Github: https://github.com/darlanrod/input-range-sass
-// Author: Darlan Rod https://github.com/darlanrod
-// Version 1.5.1
-// MIT License
 
-$track-color: linear-gradient(-85deg,#FF9E00  2%,#FFE682  98%) !default;
+$track-color-light: linear-gradient(-85deg,#FF9E00  2%,#FFE682  98%) !default;
+$track-color-temperature: linear-gradient(-90deg, #F76B1C 2%, #FFD800 51%, #068FFF 100%);
 $thumb-color: rgba(0,0,0,0) !default;
 
 $thumb-radius: 32px !default;
@@ -26,7 +22,8 @@ $track-border-color: #ffffff !default;
 
 $track-radius: 30px !default;
 $contrast: 0 !default;
-/*$ie-bottom-track-color: darken($track-color, $contrast) !default;*/
+//$ie-bottom-track-color-light: darken($track-color-light, $contrast) !default;
+$ie-bottom-track-color-light: darken(red, $contrast) !default;
 
 @mixin shadow($shadow-size, $shadow-blur, $shadow-color) {
   box-shadow: $shadow-size $shadow-size $shadow-blur $shadow-color, 0 0 $shadow-size lighten($shadow-color, 5%);
@@ -69,166 +66,231 @@ $contrast: 0 !default;
   cursor: not-allowed;
 }
 
-[type='range'] {
-  -webkit-appearance: none;
-  background: transparent;
-  margin: $thumb-height / 2 0;
-  width: $track-width;
 
-  &::-moz-focus-outer {
-    border: 0;
-  }
+  [type='range'] {
+    -webkit-appearance: none;
+    background: transparent;
+    height: 60px;
+    position: relative;
+    z-index: 1;
+    border-radius: 30px;
+    width: $track-width;
 
-  &:focus {
-    outline: 0;
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &:focus {
+      outline: 0;
+
+      &::-webkit-slider-runnable-track {
+        /* background: lighten($track-color-light, $contrast);*/
+      }
+    }
 
     &::-webkit-slider-runnable-track {
-     /* background: lighten($track-color, $contrast);*/
+      @include track;
+      @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+      background: $track-color-light;
+      border: $track-border-width solid $track-border-color;
+      border-radius: $track-radius;
     }
 
-    &::-ms-fill-lower {
-      background: $track-color;
-    }
-
-    &::-ms-fill-upper {
-     /* background: lighten($track-color, $contrast);*/
-    }
-  }
-
-  &::-webkit-slider-runnable-track {
-    @include track;
-    @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
-    background: $track-color;
-    border: $track-border-width solid $track-border-color;
-    border-radius: $track-radius;
-  }
-
-  &::-webkit-slider-thumb {
-    @include custom-thumb;
-    -webkit-appearance: none;
-    margin-top: ((-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2);
-  }
-
-  &::-moz-range-track {
-    @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
-    @include track;
-    background: $track-color;
-    border: $track-border-width solid $track-border-color;
-    border-radius: $track-radius;
-    height: $track-height;
-  }
-
-  &::-moz-range-thumb {
-    @include custom-thumb(-4);
-  }
-
-  &::-ms-track {
-    @include track;
-    background: transparent;
-    border-color: transparent;
-    border-width: ($thumb-height / 2) 0;
-    color: transparent;
-  }
-
-  &::-ms-fill-lower {
-    @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
- /*   background: $ie-bottom-track-color;*/
-    border: $track-border-width solid $track-border-color;
-    border-radius: ($track-radius * 2);
-  }
-
-  &::-ms-fill-upper {
-    @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
-    background: $track-color;
-    border: $track-border-width solid $track-border-color;
-    border-radius: ($track-radius * 2);
-  }
-
-  &::-ms-thumb {
-    @include custom-thumb(-4);
-    margin-top: $track-height / 4;
-  }
-
-  &:disabled {
     &::-webkit-slider-thumb {
-      @include disabled;
+      @include custom-thumb;
+      -webkit-appearance: none;
+      margin-top: ((-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2);
+    }
+
+    &::-moz-range-track {
+      @include shadow($track-shadow-size, $track-shadow-blur, $track-shadow-color);
+      @include track;
+      background: $track-color-light;
+      border: $track-border-width solid $track-border-color;
+      border-radius: $track-radius;
+      height: $track-height;
     }
 
     &::-moz-range-thumb {
-
+      @include custom-thumb(-4);
     }
 
-    &::-ms-thumb {
-      @include disabled;
-    }
-
-    &::-webkit-slider-runnable-track {
-      @include disabled;
+    &::-ms-track {
+      @include track;
+      background: transparent;
+      border-color: transparent;
+      border-width: ($thumb-height / 2) 0;
+      color: transparent;
     }
 
     &::-ms-fill-lower {
-      @include disabled;
+      display: none !important;
+      width: 0 !important;
+      background: $ie-bottom-track-color-light;
+      border: $track-border-width solid $track-border-color;
+      border-radius: ($track-radius * 2);
     }
 
     &::-ms-fill-upper {
-      @include disabled;
+      background: $track-color-light;
+      border: $track-border-width solid $track-border-color;
+      border-radius: ($track-radius * 2);
+    }
+
+    &::-ms-thumb {
+      @include custom-thumb(-4);
+      margin: 0 !important;
+    }
+
+    &:disabled {
+      &::-webkit-slider-thumb {
+        @include disabled;
+      }
+
+      &::-moz-range-thumb {
+
+      }
+
+      &::-ms-thumb {
+        @include disabled;
+      }
+
+      &::-webkit-slider-runnable-track {
+        @include disabled;
+      }
+
+      &::-ms-fill-lower {
+        @include disabled;
+      }
+
+      &::-ms-fill-upper {
+        @include disabled;
+      }
+    }
+  }
+ /* track color generator*/
+ .input_range__container {
+   position: relative;
+ }
+
+
+.input_range__container_light {
+  [type='range'] {
+    background-image: $track-color-light;
+    &::-webkit-slider-runnable-track {
+      background: $track-color-light;
+    }
+    &::-moz-range-track {
+      background: $track-color-light;
     }
   }
 }
 
- input[type=range] {
-  position: relative;
-  z-index: 1;
-  top:-5px;
-  &::before {
-    z-index: 2;
-    display: block;
-    content:'';
-    width: 36px;
-    height: 36px;
-    left:15px;
-    @include background_custom('icon_sun_min@2x.png');
-    position: absolute;
-    background-size: cover;
-    top:50%;
-    transform: translateY(-50%);
-
-  }
-  &::after {
-    z-index: 2;
-    display: block;
-    content:'';
-    width: 36px;
-    height: 36px;
-    right:15px;
-    @include background_custom('icon_sun_max@2x.png');
-    position: absolute;
-    background-size: cover;
-    top:50%;
-
-    transform: translateY(-50%);
-
+.input_range__container_temperature {
+  [type='range'] {
+    background-image: $track-color-temperature;
+    &::-webkit-slider-runnable-track {
+      background-image: $track-color-temperature;
+    }
+    &::-moz-range-track {
+      background-image: $track-color-temperature;
+    }
   }
 }
 
-@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor)
+
+ .control_left {
+   @extend .unselectable;
+   z-index: 2;
+   display: block;
+   width: 36px;
+   height: 36px;
+   left:15px;
+   align-items: center;
+   justify-content: center;
+   position: absolute;
+   background-size: cover;
+   top:calc(50% + 17px);
+   transform: translateY(-50%);
+ }
+
+ .control_right {
+   @extend .unselectable;
+   z-index: 1;
+   pointer-events: none;
+   display: block;
+   width: 36px;
+   height: 36px;
+   right:15px;
+   align-items: center;
+   justify-content: center;
+   position: absolute;
+   background-size: cover;
+   top:calc(50% + 17px);
+   transform: translateY(-50%);
+ }
+
+.control_left_temperature, .control_right_temperature {
+  font-size: 20px;
+  color:white;
+}
+
+ .control_left_light {
+   @include background_custom('icon_sun_min@2x.png');
+   top:calc(50% + 11px);
+ }
+
+ .control_right_light {
+    @include background_custom('icon_sun_max@2x.png');
+   top:calc(50% + 11px);
+ }
+
+
+
+.input_range__container {
+  padding-top: 25px;
+}
+
+@include for-custom-width-from-to(0, $popupMobile)
 {
-  input[type=range], input[type=range]::after, input[type=range]::before
+  input[type=range]
   {
     transform: rotate(270deg);
   }
-  input[type=range]::after, input[type=range]::before {
-    top: 13px;
-  }
 
-  input[type=range] {
-    width: 340px;
+  .input_range__container {
+    display: flex;
+    height: 100%;
+    align-items: center;
   }
-
   .input_range {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: center;
   }
+
+  .control_left {
+    left: 50%;
+    transform: translateX(-50%);
+    top:auto;
+    bottom: 0;
+  }
+  .control_right {
+    left: 50%;
+    transform: translateX(-50%);
+    top:40px;
+  }
+
+  .control_left_light {
+    bottom: 5px;
+  }
+  .control_right_light {
+    top: 35px;
+  }
+
+  .input_range__container_temperature input[type=range], .input_range__container_light input[type=range] {
+    width: 340px;
+  }
+
 }

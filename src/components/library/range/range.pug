@@ -1,3 +1,5 @@
 div.input_range(class=postfix ? 'input_range_' + postfix: false)
     div.input_range__container(class=postfix ? 'input_range__container_' + postfix: false)
         input(type='range')
+        div.control_left(class=postfix ? 'control_left_' + postfix: false)=range.from ? range.from : ''
+        div.control_right(class=postfix ? 'control_right_' + postfix: false)=range.to ? range.to : ''

@@ -6,8 +6,11 @@ let scss = require('gulp-sass');
 let concat = require('gulp-concat');
 let plumber = require('gulp-plumber');
 let notifier = require('node-notifier');
-let order = require("gulp-order");
 let rename = require("gulp-rename");
+let cleanCSS = require('gulp-clean-css');
+let prefixer = require('gulp-autoprefixer');
+let uglify = require('gulp-uglify');
+let babel = require('gulp-babel');
 
 let plumberNotifyConfig = { errorHandler: function(err) {
         console.log(err);
@@ -21,7 +24,7 @@ let plumberNotifyConfig = { errorHandler: function(err) {
 /* project paths */
 let paths = {
         styles: {
-            src: ['src/global/styles/*/*.scss', 'src/global/styles/index.scss', 'src/components/*/*/*.scss',],
+            src: ['src/global/styles/service/_variables.scss', 'src/global/styles/*/*.scss', 'src/global/styles/index.scss', 'src/components/*/*/*.scss',],
             tempDir: 'src/global/styles/temp',
             dir: 'build/',
         },
@@ -40,16 +43,32 @@ let paths = {
  `1 work with scss files,
    without it we have to pass all imports (variables, colors....) in each component */
 gulp.task('combine-scss', function combineScss() {
-   return gulp.src(paths.styles.src)
-       .pipe(plumber(plumberNotifyConfig))
-       .pipe(rename((path)=>{
-           path.extname = ".css";
-       }))
-       .pipe(concat('styles.css'))
-       .pipe(rename((path)=>{
-           path.extname = ".scss";
-       }))
+    return gulp.src(paths.styles.src)
+        .pipe(plumber(plumberNotifyConfig))
+        .pipe(rename((path)=>{
+            path.extname = ".css";
+        }))
+        .pipe(concat('styles.css'))
+        .pipe(rename((path)=>{
+            path.extname = ".scss";
+        }))
         .pipe(scss())
+        .pipe(gulp.dest(paths.styles.dir));
+});
+
+gulp.task('build css', function combineScss() {
+    return gulp.src(paths.styles.src)
+        .pipe(plumber(plumberNotifyConfig))
+        .pipe(rename((path)=>{
+            path.extname = ".css";
+        }))
+        .pipe(concat('styles.css'))
+        .pipe(rename((path)=>{
+            path.extname = ".scss";
+        }))
+        .pipe(scss())
+        .pipe(prefixer())
+        .pipe(cleanCSS())
         .pipe(gulp.dest(paths.styles.dir));
 });
 
@@ -90,6 +109,18 @@ gulp.task('scripts', function scripts() {
         .pipe(gulp.dest(paths.scripts.dir))
 });
 
+gulp.task('build scripts', function scripts() {
+    return gulp.src(paths.scripts.src)
+        .pipe(plumber(plumberNotifyConfig))
+        .pipe(changed(paths.scripts.dir))
+        .pipe(concat('scripts.js'))
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.scripts.dir))
+});
+
 gulp.task('scripts-watch', ['scripts'], function (done) {
     browserSync.reload();
     done();
@@ -109,3 +140,6 @@ gulp.task('watch', ['scripts','styles','index'], function () {
     gulp.watch(paths.styles.src, ['styles-watch']);
     gulp.watch(paths.index.src, ['index-watch']);
 });
+
+
+gulp.task('build', ['build css','build scripts', 'index']);

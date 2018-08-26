@@ -27,18 +27,18 @@
     flex-direction: row;
   }
 
-  .filter_container_favorite_dv {
+  .filter_favorite_dv {
     margin-right: 10px;
   }
 
-  .filter_container_favorite_dv:first-of-type {
+  .filter_favorite_dv:first-of-type {
     margin-left: 13px;
   }
 }
 
 @include for-custom-width-from-to(0, $tabletLandscapeUp) {
 
-  .filter_favorite_dv:not(.filter--active) {
+  .filter_favorite_dv:not(.filter_favorite_dv--active) {
     display: none;
     box-shadow: $defaultBoxShadow;
   }
@@ -47,9 +47,13 @@
     display: flex !important;
   }
 
-  .filter_favorite_dv .filter--active {
+  .filter_favorite_dv  {
     display: flex;
     box-shadow: none;
+
+  }
+
+  .filter_favorite_dv--active {
     order: 1;
     opacity: 1;
     &::after {
@@ -79,11 +83,11 @@
     margin: 5px 0 0 0;
   }
 
-  .filter_favorite_dv:not(.filter--active) {
+  .filter_favorite_dv:not(.filter_favorite_dv--active) {
     background-color: white;
   }
 
-  .filter_favorite_dv.filter--active {
+  .filter_favorite_dv.filter_favorite_dv--active {
     display: flex;
     order: 1;
     &::after {
@@ -96,7 +100,7 @@
 
 
 .filters_block_light {
-  margin-top: 7px;
+  margin-top: 10px;
 }
 
 .filter_light {
@@ -106,41 +110,63 @@
   align-items: center;
   background-color: $background;
   border-radius: 20px;
+  font-weight: bold;
   margin-right: 10px;
   &:first-of-type {
   margin-left: 0;
 }
 }
 
-@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor)
+@include for-custom-width-from-to(0, $popupMobile)
 {
   .filter_light {
     white-space: nowrap;
+    font-weight: normal;
+    &:last-of-type {
+    }
   }
 
-  .filters_block_light {
+  .filters_container_light {
     margin-top: 20px;
+    height: 40px;
     width: calc(100% + 20px);
-    overflow-x: hidden;
+    overflow: hidden;
   }
-
-  .filters_block_light::after {
-    content: '';
+  .filters_block_light {
+    margin-top: 0;
     display: inline-flex;
     width: 100%;
     overflow-x: scroll;
-    padding-bottom: 17px;
+    padding-bottom: 18px;
     box-sizing: content-box;
   }
 
 }
+
 .filter_title_light {
   font-size: 13px;
 }
 
+.filters_container_temperature {
+  @extend .filters_container_light;
+}
+
+.filters_block_temperature {
+  @extend .filters_block_light;
+}
+
+.filter_temperature {
+  @extend .filter_light;
+}
+
+.filter_title_temperature {
+  @extend .filter_title_light
+}
 
 
-.filter--active > .filter {
+
+
+.filter_light--active,.filter_favorite_dv--active, .filter_temperature--active {
   background-color: $yellow;
   transition: background-color 0.3s ease;
 }

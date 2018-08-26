@@ -1,10 +1,17 @@
 
 .popup {
   position: relative;
+  z-index: 4;
   background-color: white;
   border-radius: 20px;
+  will-change: transform, opacity;
 }
 
+.popup__icon {
+ &>img {
+   height: 43px;
+ }
+}
 .popup_container {
   height: 100%;
   width: 100%;
@@ -74,16 +81,56 @@
   filter: blur(3px);
 }
 
-@include for-custom-width-from($mobileTimelineFromVerticalToHor) {
 
+.popup_manager {
+  display: none;
+  top:0;
+  left: 0;
+  z-index: 3;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.popup_background {
+  will-change: transform;
+  z-index: 3;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  position: fixed;
+  background: rgba(51,51,51,0.50);
+}
+
+@include for-custom-width-from($popupMobile) {
 
   .popup_additional_text {
-    top:-13px;
+    top:-9px;
   }
 
+  .popup_manager {
+    padding: 0 0 20px 0;
+    align-items: flex-start;
+    justify-content: center;
+  }
+.popup_icon_subtext {
+  display: block;
+  font-size: 33px;
+  color: $mainGray;
+  top: 28px;
+  font-weight: bold;
+  right:70px;
+  position: absolute;
+}
   .popup {
     width: 630px;
     height: 238px;
+  }
+  .popup_balloon {
+    height: 343px;
   }
   .popup_container {
     flex-wrap: wrap;
@@ -93,14 +140,29 @@
   .popup_buttons {
     margin-top: 20px
   }
+
+  .popup_content_balloon {
+    display: flex;
+    height: 100%;
+    align-items: center;
+  }
+
+  .popup_temperature, .popup_light {
+    margin-top: 190px;
+  }
+
+  .popup_balloon {
+    margin-top: 100px;
+  }
+
 }
 
-@include for-custom-width-from-to(0, $mobileTimelineFromVerticalToHor)
+
+@include for-custom-width-from-to(0, $popupMobile)
 {
   .popup_manager {
     padding: 20px;
     align-items: flex-start;
-
   }
 
   .popup_additional_text {
@@ -132,14 +194,23 @@
   }
 
   .popup__content {
-    height: 390px;
+    height: 350px;
+  }
+  .balloon_balloon {
+    padding-top: 30px;
+  }
+  .popup_content_balloon {
+    display: flex;
+    height: 100%;
+    align-items: center;
   }
 
 }
 
-
-@-moz-document url-prefix() {
-.popup__content {
-margin: 15px 0;
+.popup_manager--active {
+  display: flex;
 }
+
+.popup--active {
+  display: block;
 }

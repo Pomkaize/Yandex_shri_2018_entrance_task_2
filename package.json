@@ -4,21 +4,21 @@
   "description": "entrance-task-2-2",
   "dependencies": {},
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.24.6",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^7.0.1",
     "gulp-changed": "^3.2.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-concat": "^2.6.1",
-    "gulp-order": "^1.1.1",
     "gulp-plumber": "^1.2.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
-    "gulp-sass-glob": "^1.0.9",
-    "gulp-stylelint": "^7.0.0",
-    "node-notifier": "^5.2.1",
-    "stylelint": "^9.4.0"
+    "gulp-uglify": "^3.0.1",
+    "node-notifier": "^5.2.1"
   },
   "scripts": {
     "start-dev": "gulp watch",

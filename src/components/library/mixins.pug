@@ -1,6 +1,9 @@
 mixin arrows(arrows, postfix)
     include arrows/arrows
 
+mixin balloon(balloon, postfix)
+    include balloon/balloon
+
 mixin card(card, postfix)
     include card/card
 
@@ -33,9 +36,10 @@ mixin popup(popup, postfix)
 
 // high order mixins
 mixin filters-block(filtersArray, postfix)
-    div.filters_block(class=postfix ? 'filters_block_' + postfix:false)
-        each filterItem in filtersArray
-            +filter(filterItem, postfix)
+    div.filters_container(class=postfix ? 'filters_container_' + postfix:false)
+        div.filters_block(class=postfix ? 'filters_block_' + postfix:false)
+            each filterItem in filtersArray
+                +filter(filterItem, postfix)
 
 mixin weather-block(weatherArray, postfix)
     div.weather_block(class=postfix ? 'weather_block_' + postfix:false)
@@ -52,3 +56,4 @@ mixin popup-block(popupArray)
     div.popup_manager
         each popup in popupArray
             +popup(popup, postfix)
+        div.popup_background
